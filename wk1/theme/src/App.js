@@ -1,23 +1,19 @@
-import React from "react"
+import React from 'react';
+import './App.css';
+import Header from './Header'
+import Button from './Button'
+import ThemeContext from './themeContext'
 
-import Header from "./Header"
-import UserContext from "./userContext"
-
-class App extends React.Component {
-  static contextType =UserContext
-
-  render() {
-    const username = this.context
-    return (
-      <div>
-        <Header />
-        <main>
-          <p className="main">No new notifications, {username}!</p>
-        </main>
-      </div>
-    )
-  }
+function App() {
+  return (
+    <div className="App">
+      <Header />
+      <ThemeContext.Consumer>
+        {({theme}) => (
+          <Button theme = {theme} />
+        )}
+      </ThemeContext.Consumer>
+    </div>
+  )
 }
-
-
-export default App
+export default App;
